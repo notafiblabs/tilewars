@@ -1,0 +1,11 @@
+@import './colors';
+
+.tile {
+    background-color: green;
+
+    &.selected {
+        border: 3px dashed black;
+    }
+
+    
+}

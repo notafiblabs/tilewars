@@ -1,0 +1,57 @@
+@import './colors';
+
+.tile-viewer{
+
+    background-color: $background;
+    padding: 5px 5px;
+    display: grid;
+    grid-template-columns: auto auto auto 15px auto auto 15px minmax(100px, 100%);
+
+    align-items: center;
+    justify-items: center;
+    border-top: 1px solid $border;;
+    
+    & > * {
+        margin: 0px 5px;
+        text-align: center;
+    }
+
+    .label {
+        opacity: .8;
+    }    
+
+    .zoom-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        input {
+            font-size: 12px;
+            width: 100%;
+        }
+    }
+
+    .divider {
+        justify-self: center;
+        width: .5px;
+        background-color: $border;
+        height: 70%;
+        
+    }
+
+    button {
+        padding: 2px 3px;
+        border-radius: 3px;
+        margin: 0px 5px;
+        font-size: 13px;
+        background-color: transparent;
+        border: 1px solid $border;
+        cursor: pointer;
+        
+        &:active {
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+        }
+    }
+    
+}

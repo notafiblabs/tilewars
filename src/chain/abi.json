@@ -1,0 +1,182 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "indexAttacker",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "indexDefender",
+				"type": "uint256"
+			}
+		],
+		"name": "attackTile",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "buyTile",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			}
+		],
+		"name": "sellTile",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "power",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sellPrice",
+						"type": "uint256"
+					}
+				],
+				"indexed": false,
+				"internalType": "struct grid.Tile",
+				"name": "t",
+				"type": "tuple"
+			}
+		],
+		"name": "UpdateTile",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "getAllTiles",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "power",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sellPrice",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct grid.Tile[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "getTileAtIndex",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "power",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sellPrice",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct grid.Tile",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index1",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "index2",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "edgeSize",
+				"type": "uint256"
+			}
+		],
+		"name": "isAdjacent",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	}
+]

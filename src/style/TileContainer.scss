@@ -1,0 +1,30 @@
+@import './colors';
+
+.TileContainer {
+    width: 100%;
+    height: 100%;
+
+    background-color: lightgray;
+}
+
+.tile-grid-container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    background-color: $background;
+}
+
+.tile-grid {
+    display: grid;
+    gap: .8px;
+
+    background-color: blue;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+
