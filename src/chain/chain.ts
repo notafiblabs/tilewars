@@ -1,16 +1,38 @@
-import { Contract, ethers } from "ethers"
+import { BigNumber, Contract, ethers } from "ethers"
 import abi from './abi.json';
+import approveAbi from './approve-abi.json';
 
-const contractAddress = '0x653324E7ad696D70c9aa590Ad657395D7DF3bf83';
+export const mainAddress = '0x0D20bFb8daD8AA70AA0d7Ea73d95b79e641587Ed';
+const approveAddress = '0xa36085F69e2889c224210F603D836748e7dC0088';
 
-export const provider = new ethers.providers.Web3Provider((window as any).web3.currentProvider);
-provider.send("eth_requestAccounts", []);
+export const provider = new ethers.providers.Web3Provider((window as any).ethereum);
+export let signer = provider.getSigner(0);
 
-export const signer = provider.getSigner(0);
-export interface IContracts {
-    main: Contract
+const callbackList: (() => void)[] = [];
+export function subscribeToAccountChange(callback: () => void) {
+    callbackList.push(callback);
 }
 
-export const contracts: IContracts = {
-    main: new ethers.Contract(contractAddress, abi, signer)
+provider.send("eth_requestAccounts", []);
+provider.on('accountsChanged', () => {
+    console.log(callbackList);
+    for(let callback of callbackList) {
+        callback();
+    } 
+});
+
+export function getAddress(): Promise<string> {
+    return signer.getAddress();
+}
+
+export interface IContracts {
+    main: Contract;
+    approve: Contract;
+}
+
+export function contracts() {
+    return {
+        main: new ethers.Contract(mainAddress, abi, signer),
+        approve: new ethers.Contract(approveAddress, approveAbi, signer)
+    };
 }

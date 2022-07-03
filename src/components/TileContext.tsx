@@ -1,10 +1,10 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { getAllTiles } from '../chain/main';
+import { getAllTiles, subscribeToRefresh } from '../chain/main';
 import { ITile } from '../types';
 
 export interface ITileData {
     tiles: ITile[];
-    selectedTileIndex: number | null;
+    selectedTileIndex: number;
     hoveredTileIndex: number | null;
     loading: boolean;
 }
@@ -17,7 +17,7 @@ export interface ITileContext {
 export const TileContext = React.createContext<ITileContext>({
     tileData: {
         tiles: [],
-        selectedTileIndex: null,
+        selectedTileIndex: 0,
         hoveredTileIndex: null,
         loading: true
     },
@@ -26,20 +26,27 @@ export const TileContext = React.createContext<ITileContext>({
 
 export const TileContextProvider = ({children}: PropsWithChildren) => {
     let [state, setState] = useState<ITileData>({
-        selectedTileIndex: null,
+        selectedTileIndex: 0,
         hoveredTileIndex: null,
         tiles: [],
         loading: true
     });
 
     useEffect(() => {
+        load();
+        
+        subscribeToRefresh(() => {
+            load();
+        });
+    }, []);
+
+    function load() {
         getAllTiles().then(tiles => {
             setState(state => {
                 return {...state, tiles, loading: false};
             });
         });
-
-    }, []);
+    }
 
     return (
     <TileContext.Provider value={{

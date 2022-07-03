@@ -10,8 +10,8 @@ function App() {
   return (
     <TileContextProvider>
       <div className="App">      
-          <TileContainer rows={20} cols={20} zoom={zoom} setZoom={setZoom}/>
           <TileViewer zoom={zoom} setZoom={setZoom}/>  
+          <TileContainer rows={20} cols={20} zoom={zoom} setZoom={setZoom}/>
       </div>
     </TileContextProvider> 
   );

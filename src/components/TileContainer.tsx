@@ -151,15 +151,14 @@ class LoadedTileContainer extends React.Component<ITileContainerProps, ITileCont
     mouseUp = () => {
         this.mouseDown = false;
         this.previousTouch = null;
-        console.log('up');
     }
 
     wheelHandler = (event: React.WheelEvent) => {
         let zoomAmt = -event.deltaY / 10;
         if(this.props.zoom + zoomAmt < 0)
-            zoomAmt = 0;
-
-        this.props.setZoom(zoom => zoom + zoomAmt);
+            this.props.setZoom(_ => 0);
+        else
+            this.props.setZoom(zoom => zoom + zoomAmt);
     }
 
     render(): React.ReactNode {
@@ -173,7 +172,7 @@ class LoadedTileContainer extends React.Component<ITileContainerProps, ITileCont
                 }}>    
                     <div className="tile-grid" ref={this.ref}
                         onWheel={this.wheelHandler}
-                        onPointerDown={() => {this.mouseDown = true; console.log('down')}}
+                        onPointerDown={() => this.mouseDown = true}
                         style={{
                             gridTemplateRows: frRepeat(this.props.rows),
                             gridTemplateColumns: frRepeat(this.props.cols),

@@ -1,0 +1,44 @@
+@import './colors';
+
+.ListTilePopup {
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000;
+    background-color: $background;
+    border: 1px solid $border;
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    label {
+        font-size: 18px;
+    }
+
+    input {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-right: 5px;
+        
+    }
+}
+
+.popup-background {
+    position: absolute;
+    background-color: rgba(#000000, .4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
